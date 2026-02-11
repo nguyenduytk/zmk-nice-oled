@@ -67,7 +67,7 @@ static void set_battery_status(struct zmk_widget_screen *widget,
 #endif /* IS_ENABLED(CONFIG_USB_DEVICE_STACK) */
 
     widget->state.battery = state.level;
-
+    widget->state.bat_mv = state.bat_mv;
     draw_canvas(widget->obj, widget->cbuf, &widget->state);
 
     // draw_animation(widget->obj, widget);
@@ -96,6 +96,7 @@ static struct battery_status_state battery_status_get_state(const zmk_event_t *e
 
     return (struct battery_status_state){
         .level = (ev != NULL) ? ev->state_of_charge : zmk_battery_state_of_charge(),
+        .bat_mv = (ev != NULL) ? ev->bat_mv : zmk_battery_get_mv(),
 #if IS_ENABLED(CONFIG_USB_DEVICE_STACK)
         .usb_present = zmk_usb_is_powered(),
 #endif /* IS_ENABLED(CONFIG_USB_DEVICE_STACK) */

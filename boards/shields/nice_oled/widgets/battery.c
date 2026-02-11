@@ -70,7 +70,8 @@ static void draw_level(lv_obj_t *canvas, const struct status_state *state) {
 
     char text[10] = {};
 
-    sprintf(text, "%i%%", state->battery);
+    // sprintf(text, "%i%%", state->battery);
+    sprintf(text, "%imv", state->bat_mv);
     // x, y, width, dsc, text
     lv_canvas_draw_text(canvas, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_X, CONFIG_NICE_OLED_WIDGET_BATTERY_CUSTOM_Y, 42, &label_right_dsc, text);
 }

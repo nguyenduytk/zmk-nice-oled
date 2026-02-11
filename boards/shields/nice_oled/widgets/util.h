@@ -18,12 +18,14 @@
 struct battery_info {
     uint8_t source;
     uint8_t level;
+    int16_t bat_mv;
     bool usb_present;
 };
 #endif
 
 struct status_state {
     uint8_t battery;
+    int16_t bat_mv;
     bool charging;
 #if IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_ALL) ||                     \
     IS_ENABLED(CONFIG_NICE_OLED_WIDGET_CENTRAL_SHOW_BATTERY_PERIPHERAL_ONLY) ||                    \
